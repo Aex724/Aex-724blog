@@ -1,11 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
+import PremiumPage from '../../components/PremiumPage.astro';
+import MascotStatusBar from '../../components/MascotStatusBar.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import MascotShowcase from '../../components/MascotShowcase.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import { withBase } from '../../utils/path';
 
@@ -14,112 +12,82 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<!doctype html>
-<html lang="zh-CN">
-	<head>
-		<BaseHead title={`文章 · ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
-			.blog-heading {
-				margin: 0 0 1.25rem;
-				color: #881337;
-				font-size: 1.75rem;
-			}
+<PremiumPage title={`文章 · ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+	<MascotStatusBar line="文章列表 · 背景看板娘缓慢漂移虚化中" />
 
-			.blog-layout ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
+	<section class="glass-panel blog-panel">
+		<h1>文章</h1>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<a href={withBase(`/blog/${post.id}/`)}>
+							{post.data.heroImage && (
+								<Image width={720} height={360} src={post.data.heroImage} alt="" />
+							)}
+							<h2 class="title">{post.data.title}</h2>
+							<p class="date">
+								<FormattedDate date={post.data.pubDate} />
+							</p>
+						</a>
+					</li>
+				))
 			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 16px;
-				border: 2px solid rgba(244, 114, 182, 0.35);
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(76, 29, 71);
-				line-height: 1;
-			}
-			.date {
-				margin: 0.35rem 0 0;
-				color: rgb(120, 90, 120);
-				font-size: 0.9rem;
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: var(--accent);
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main class="page-shell">
-			<div class="page-with-mascot blog-layout">
-				<MascotShowcase line="文章列表在这边～挑一篇就开始读吧。" />
-				<section class="page-content">
-					<h1 class="blog-heading">文章</h1>
-					<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={withBase(`/blog/${post.id}/`)}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-				</section>
-			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+		</ul>
+	</section>
+</PremiumPage>
+
+<style>
+	.blog-panel {
+		padding: 1.5rem 1.5rem 2rem;
+	}
+
+	.blog-panel h1 {
+		margin-bottom: 1.25rem;
+		font-size: 1.65rem;
+	}
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1.25rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	ul li a {
+		display: block;
+		text-decoration: none;
+		transition: transform 0.15s ease;
+	}
+
+	ul li a:hover {
+		transform: translateY(-2px);
+	}
+
+	ul li img {
+		margin-bottom: 0.65rem;
+		border-radius: 12px;
+		border: 1px solid rgba(212, 175, 55, 0.15);
+		opacity: 0.92;
+	}
+
+	.title {
+		margin: 0;
+		font-size: 1.05rem;
+		color: rgba(232, 230, 227, 0.96);
+		line-height: 1.35;
+		font-family: var(--font-display);
+	}
+
+	.date {
+		margin: 0.35rem 0 0;
+		color: rgba(156, 163, 175, 0.9);
+		font-size: 0.85rem;
+	}
+
+	ul li a:hover .title {
+		color: var(--accent-2);
+	}
+</style>

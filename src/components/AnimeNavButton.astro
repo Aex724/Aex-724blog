@@ -32,51 +32,46 @@ const resolved = href.startsWith('http') ? href : withBase(href);
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.35rem;
-		min-height: 5.5rem;
+		gap: 0.4rem;
+		min-height: 5.25rem;
 		padding: 1rem 0.75rem;
-		border-radius: 20px;
+		border-radius: 14px;
 		text-decoration: none;
-		color: #4a1942;
-		background: linear-gradient(145deg, #fff5fb 0%, #fce7f3 45%, #f5d0fe 100%);
-		border: 2px solid rgba(236, 72, 153, 0.35);
-		box-shadow:
-			0 8px 0 rgba(190, 24, 93, 0.25),
-			0 12px 28px rgba(236, 72, 153, 0.2);
+		color: rgba(232, 230, 227, 0.95);
+		background: rgba(18, 21, 30, 0.55);
+		border: 1px solid rgba(212, 175, 55, 0.2);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 		overflow: hidden;
 		transition:
-			transform 0.12s ease,
-			box-shadow 0.12s ease,
-			filter 0.15s ease;
+			transform 0.14s ease,
+			border-color 0.14s ease,
+			background 0.14s ease;
 		cursor: pointer;
 		user-select: none;
+		backdrop-filter: blur(10px);
 	}
 
 	.nav-btn:hover {
-		transform: translateY(-3px);
-		filter: brightness(1.03);
-		box-shadow:
-			0 10px 0 rgba(190, 24, 93, 0.22),
-			0 16px 32px rgba(236, 72, 153, 0.28);
+		transform: translateY(-2px);
+		border-color: rgba(212, 175, 55, 0.45);
+		background: rgba(24, 28, 40, 0.72);
 	}
 
 	.nav-btn:active {
-		transform: translateY(4px);
-		box-shadow:
-			0 2px 0 rgba(190, 24, 93, 0.3),
-			0 6px 16px rgba(236, 72, 153, 0.2);
+		transform: translateY(1px);
 	}
 
 	.emoji {
-		font-size: 1.75rem;
+		font-size: 1.5rem;
 		line-height: 1;
-		filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.8));
+		opacity: 0.95;
 	}
 
 	.label {
-		font-weight: 700;
-		font-size: 0.95rem;
-		letter-spacing: 0.04em;
+		font-weight: 600;
+		font-size: 0.88rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
 	.shine {
@@ -84,15 +79,14 @@ const resolved = href.startsWith('http') ? href : withBase(href);
 		inset: -40% auto auto -30%;
 		width: 45%;
 		height: 140%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+		background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.18), transparent);
 		transform: rotate(18deg);
 		opacity: 0;
-		transition: opacity 0.2s ease;
 	}
 
 	.nav-btn:hover .shine {
 		opacity: 1;
-		animation: sweep 0.8s ease;
+		animation: sweep 0.85s ease;
 	}
 
 	@keyframes sweep {

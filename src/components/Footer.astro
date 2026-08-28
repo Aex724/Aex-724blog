@@ -5,43 +5,45 @@ const today = new Date();
 ---
 
 <footer>
-	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE} · 用代码与可爱并存的方式记录成长</p>
+	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
 	<p class="links">
 		<a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-		<span aria-hidden="true">♡</span>
-		<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">智能车工程</a>
+		<span aria-hidden="true">·</span>
+		<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">Smartcar</a>
 	</p>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 3.5em;
+		padding: 2rem 1rem 2.75rem;
 		text-align: center;
-		border-top: 2px dashed rgba(244, 114, 182, 0.35);
-		background: rgba(255, 255, 255, 0.45);
+		border-top: 1px solid rgba(212, 175, 55, 0.1);
+		background: linear-gradient(180deg, transparent, rgba(5, 6, 8, 0.65));
 	}
 
 	.copy {
-		margin: 0 0 0.5em;
-		color: #9d174d;
-		font-size: 0.88rem;
+		margin: 0 0 0.4rem;
+		color: rgba(156, 163, 175, 0.85);
+		font-size: 0.82rem;
+		letter-spacing: 0.06em;
 	}
 
 	.links {
 		margin: 0;
-		font-size: 0.9rem;
-		font-weight: 600;
+		font-size: 0.82rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
 
 	.links a {
-		color: #be185d;
+		color: rgba(212, 175, 55, 0.85);
 	}
 
 	.links a:hover {
-		color: var(--accent-2);
+		color: #fff;
 	}
 
 	.links span {
 		margin: 0 0.45em;
-		color: #f472b6;
+		color: rgba(100, 116, 139, 0.8);
 	}
 </style>
