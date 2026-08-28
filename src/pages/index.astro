@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import AnimeNavButton from '../components/AnimeNavButton.astro';
-import mascot from '../assets/mascot-anime.png';
+import MascotShowcase from '../components/MascotShowcase.astro';
 import {
 	SITE_DESCRIPTION,
 	SITE_TITLE,
@@ -22,51 +21,47 @@ import { withBase } from '../utils/path';
 	</head>
 	<body>
 		<Header />
-		<main class="home">
+		<main class="home page-shell">
 			<section class="stage">
-				<div class="mascot-wrap">
-					<div class="bubble" id="mascot-bubble" role="status" aria-live="polite">
-						<p id="mascot-line">欢迎来到 Aex724 的技术博客～点右边按钮出发吧！</p>
-					</div>
-					<div class="mascot-frame">
-						<Image
-							src={mascot}
-							alt="博客看板娘形象"
-							width={420}
-							height={560}
-							class="mascot-img"
-							loading="eager"
-						/>
-					</div>
-				</div>
+				<MascotShowcase
+					variant="hero"
+					bubbleId="mascot-bubble"
+					lineId="mascot-line"
+					line="欢迎回来～我是国风看板娘，短发异瞳、执剑护站。点右侧按钮去逛逛吧！"
+				/>
 
 				<div class="menu-panel">
 					<p class="menu-title">✦ 导航菜单 ✦</p>
 					<div class="nav-grid" id="nav-grid">
-						<AnimeNavButton href="/blog/" label="文章" emoji="📖" hint="要去看看我写的技术文章吗？" />
-						<AnimeNavButton href="/about/" label="关于" emoji="💫" hint="这里是我的自我介绍哦～" />
+						<AnimeNavButton href="/blog/" label="文章" emoji="📖" hint="要去看技术文章吗？我陪你去～" />
+						<AnimeNavButton href="/about/" label="关于" emoji="💫" hint="关于页也有我站岗哦！" />
 						<AnimeNavButton
 							href={GITHUB_SMARTCAR}
 							label="智能车"
 							emoji="🚗"
-							hint="智慧工厂 ROS 工程在这边！"
+							hint="智慧工厂 ROS 工程，利剑出鞘！"
 							external
 						/>
 						<AnimeNavButton
 							href={`https://github.com/${GITHUB_USER}`}
 							label="GitHub"
 							emoji="🐙"
-							hint="我的开源仓库都在这里～"
+							hint="开源仓库在这边～"
 							external
 						/>
 						<AnimeNavButton
 							href={GITHUB_BLOG}
 							label="博客源码"
 							emoji="🌸"
-							hint="这个网站本身也是开源的！"
+							hint="网站源码，随你改～"
 							external
 						/>
-						<AnimeNavButton href="/blog/smartcar-21-wisdom-factory/" label="项目说明" emoji="📝" hint="智能车仓库的使用说明在这篇～" />
+						<AnimeNavButton
+							href="/blog/smartcar-21-wisdom-factory/"
+							label="项目说明"
+							emoji="📝"
+							hint="智能车仓库说明在这篇～"
+						/>
 					</div>
 				</div>
 			</section>
@@ -91,7 +86,8 @@ import { withBase } from '../utils/path';
 
 		<script>
 			const line = document.getElementById('mascot-line');
-			const defaultText = '欢迎来到 Aex724 的技术博客～点右边按钮出发吧！';
+			const defaultText =
+				'欢迎回来～我是国风看板娘，短发异瞳、执剑护站。点右侧按钮去逛逛吧！';
 			const buttons = document.querySelectorAll('#nav-grid .nav-btn');
 
 			buttons.forEach((btn) => {
@@ -127,58 +123,6 @@ import { withBase } from '../utils/path';
 		gap: 1.5rem;
 		align-items: end;
 		margin-bottom: 2.5rem;
-	}
-
-	.mascot-wrap {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.bubble {
-		position: relative;
-		max-width: 22rem;
-		margin-bottom: 0.75rem;
-		padding: 0.85rem 1.1rem;
-		background: #fff;
-		border: 2px solid rgba(244, 114, 182, 0.55);
-		border-radius: 20px;
-		box-shadow: 0 8px 24px rgba(236, 72, 153, 0.15);
-		animation: float 3s ease-in-out infinite;
-	}
-
-	.bubble::after {
-		content: '';
-		position: absolute;
-		left: 50%;
-		bottom: -10px;
-		width: 18px;
-		height: 18px;
-		background: #fff;
-		border-right: 2px solid rgba(244, 114, 182, 0.55);
-		border-bottom: 2px solid rgba(244, 114, 182, 0.55);
-		transform: translateX(-50%) rotate(45deg);
-	}
-
-	.bubble p {
-		margin: 0;
-		font-size: 0.95rem;
-		color: #6b2144;
-		line-height: 1.55;
-	}
-
-	.mascot-frame {
-		width: min(100%, 320px);
-		filter: drop-shadow(0 16px 28px rgba(168, 85, 247, 0.25));
-	}
-
-	.mascot-img {
-		display: block;
-		width: 100%;
-		height: auto;
-		border-radius: 24px;
-		border: 3px solid rgba(255, 255, 255, 0.85);
 	}
 
 	.menu-panel {
@@ -225,23 +169,9 @@ import { withBase } from '../utils/path';
 		margin-bottom: 0.75rem;
 	}
 
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-4px);
-		}
-	}
-
 	@media (max-width: 820px) {
 		.stage {
 			grid-template-columns: 1fr;
-		}
-
-		.mascot-wrap {
-			order: -1;
 		}
 
 		.nav-grid {

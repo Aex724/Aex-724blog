@@ -1,42 +1,80 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
-import { GITHUB_SMARTCAR, GITHUB_USER, GITHUB_BLOG } from '../consts';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import MascotShowcase from '../components/MascotShowcase.astro';
+import { GITHUB_SMARTCAR, GITHUB_USER, GITHUB_BLOG, SITE_TITLE } from '../consts';
 ---
 
-<Layout
-	title="关于我"
-	description="Aex724 · 智能车与嵌入式相关学习记录"
-	pubDate={new Date('2026-08-28')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		你好，我是 <strong>Aex724</strong>。这个站点是我的个人技术博客，用来整理学习笔记、比赛经历和项目说明。
-	</p>
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`关于 · ${SITE_TITLE}`} description="Aex724 · 智能车与嵌入式相关学习记录" />
+	</head>
+	<body>
+		<Header />
+		<main class="page-shell">
+			<div class="page-with-mascot">
+				<MascotShowcase line="这里是关于页～想了解项目和代码，往下看就好。" />
+				<article class="page-content card about-card">
+					<h1>关于我</h1>
+					<p>
+						你好，我是 <strong>Aex724</strong>。这个站点是我的个人技术博客，用来整理学习笔记、比赛经历和项目说明。
+					</p>
 
-	<h2>我在做什么</h2>
-	<ul>
-		<li>全国大学生智能汽车竞赛 — 讯飞创意组「智慧工厂」相关开发</li>
-		<li>ROS / 导航、视觉、仿真与整车联调</li>
-		<li>把可复现的代码放在 GitHub，博客负责讲清楚「是什么、怎么用」</li>
-	</ul>
+					<h2>我在做什么</h2>
+					<ul>
+						<li>全国大学生智能汽车竞赛 — 讯飞创意组「智慧工厂」相关开发</li>
+						<li>ROS / 导航、视觉、仿真与整车联调</li>
+						<li>把可复现的代码放在 GitHub，博客负责讲清楚「是什么、怎么用」</li>
+					</ul>
 
-	<h2>开源项目</h2>
-	<p>
-		<strong>智能车工程（ROS 工作空间）</strong><br />
-		<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">{GITHUB_SMARTCAR}</a>
-	</p>
-	<p>
-		<strong>博客源码</strong><br />
-		<a href={GITHUB_BLOG} target="_blank" rel="noopener noreferrer">{GITHUB_BLOG}</a>
-	</p>
-	<p>
-		<strong>GitHub 主页</strong><br />
-		<a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer"
-			>https://github.com/{GITHUB_USER}</a
-		>
-	</p>
+					<h2>开源项目</h2>
+					<p>
+						<strong>智能车工程（ROS 工作空间）</strong><br />
+						<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">{GITHUB_SMARTCAR}</a>
+					</p>
+					<p>
+						<strong>博客源码</strong><br />
+						<a href={GITHUB_BLOG} target="_blank" rel="noopener noreferrer">{GITHUB_BLOG}</a>
+					</p>
+					<p>
+						<strong>GitHub 主页</strong><br />
+						<a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer"
+							>https://github.com/{GITHUB_USER}</a
+						>
+					</p>
 
-	<h2>联系</h2>
-	<p>欢迎通过 GitHub Issues 或仓库讨论区交流技术问题。</p>
-</Layout>
+					<h2>联系</h2>
+					<p>欢迎通过 GitHub Issues 或仓库讨论区交流技术问题。</p>
+				</article>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.about-card {
+		padding: 1.5rem 1.75rem;
+	}
+
+	.about-card h1 {
+		margin-bottom: 0.75rem;
+		color: #881337;
+	}
+
+	.about-card h2 {
+		margin-top: 1.25rem;
+		font-size: 1.2rem;
+		color: #9d174d;
+	}
+
+	.about-card ul {
+		padding-left: 1.25rem;
+	}
+
+	.about-card li {
+		margin-bottom: 0.35rem;
+	}
+</style>

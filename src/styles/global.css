@@ -3,6 +3,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap');
+@import './page-layout.css';
 
 :root {
 	--accent: #ec4899;
