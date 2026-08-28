@@ -23,7 +23,7 @@
 	--radius: 16px;
 	--font-display: 'Noto Serif SC', 'Noto Sans SC', serif;
 	--font-body: 'Noto Sans SC', system-ui, sans-serif;
-	--glass: rgba(12, 14, 20, 0.62);
+	--glass: rgba(12, 14, 20, 0.42);
 	--glass-border: rgba(212, 175, 55, 0.18);
 }
 
