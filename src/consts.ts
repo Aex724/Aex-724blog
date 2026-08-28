@@ -1,5 +1,7 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+export const SITE_TITLE = 'Aex724';
+export const SITE_DESCRIPTION = '个人技术博客 · 智能车 · ROS · 嵌入式与视觉';
 
-export const SITE_TITLE = 'Aex724 Blog';
-export const SITE_DESCRIPTION = 'Aex724 的个人技术博客';
+export const GITHUB_USER = 'Aex724';
+export const GITHUB_BLOG = 'https://github.com/Aex724/Aex-724blog';
+export const GITHUB_SMARTCAR =
+	'https://github.com/Aex724/smartcar-21-wisdom-factory';
