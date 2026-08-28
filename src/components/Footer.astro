@@ -5,42 +5,43 @@ const today = new Date();
 ---
 
 <footer>
-	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}. 记录代码与比赛。</p>
+	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE} · 用代码与可爱并存的方式记录成长</p>
 	<p class="links">
 		<a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-		<span aria-hidden="true">·</span>
+		<span aria-hidden="true">♡</span>
 		<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">智能车工程</a>
 	</p>
 </footer>
 <style>
 	footer {
-		padding: 2.5em 1em 4em;
+		padding: 2em 1em 3.5em;
 		text-align: center;
-		border-top: 1px solid rgba(51, 65, 85, 0.5);
-		background: rgba(8, 12, 24, 0.6);
+		border-top: 2px dashed rgba(244, 114, 182, 0.35);
+		background: rgba(255, 255, 255, 0.45);
 	}
 
 	.copy {
 		margin: 0 0 0.5em;
-		color: rgb(100, 116, 139);
-		font-size: 0.9rem;
+		color: #9d174d;
+		font-size: 0.88rem;
 	}
 
 	.links {
 		margin: 0;
 		font-size: 0.9rem;
+		font-weight: 600;
 	}
 
 	.links a {
-		color: rgb(148, 163, 184);
+		color: #be185d;
 	}
 
 	.links a:hover {
-		color: var(--accent);
+		color: var(--accent-2);
 	}
 
 	.links span {
-		margin: 0 0.5em;
-		color: rgb(71, 85, 105);
+		margin: 0 0.45em;
+		color: #f472b6;
 	}
 </style>

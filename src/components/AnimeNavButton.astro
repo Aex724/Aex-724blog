@@ -1,0 +1,106 @@
+---
+import { withBase } from '../utils/path';
+
+interface Props {
+	href: string;
+	label: string;
+	emoji: string;
+	hint: string;
+	external?: boolean;
+}
+
+const { href, label, emoji, hint, external = false } = Astro.props;
+const resolved = href.startsWith('http') ? href : withBase(href);
+---
+
+<a
+	class="nav-btn"
+	href={resolved}
+	data-hint={hint}
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noopener noreferrer' : undefined}
+>
+	<span class="emoji" aria-hidden="true">{emoji}</span>
+	<span class="label">{label}</span>
+	<span class="shine" aria-hidden="true"></span>
+</a>
+
+<style>
+	.nav-btn {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35rem;
+		min-height: 5.5rem;
+		padding: 1rem 0.75rem;
+		border-radius: 20px;
+		text-decoration: none;
+		color: #4a1942;
+		background: linear-gradient(145deg, #fff5fb 0%, #fce7f3 45%, #f5d0fe 100%);
+		border: 2px solid rgba(236, 72, 153, 0.35);
+		box-shadow:
+			0 8px 0 rgba(190, 24, 93, 0.25),
+			0 12px 28px rgba(236, 72, 153, 0.2);
+		overflow: hidden;
+		transition:
+			transform 0.12s ease,
+			box-shadow 0.12s ease,
+			filter 0.15s ease;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	.nav-btn:hover {
+		transform: translateY(-3px);
+		filter: brightness(1.03);
+		box-shadow:
+			0 10px 0 rgba(190, 24, 93, 0.22),
+			0 16px 32px rgba(236, 72, 153, 0.28);
+	}
+
+	.nav-btn:active {
+		transform: translateY(4px);
+		box-shadow:
+			0 2px 0 rgba(190, 24, 93, 0.3),
+			0 6px 16px rgba(236, 72, 153, 0.2);
+	}
+
+	.emoji {
+		font-size: 1.75rem;
+		line-height: 1;
+		filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.8));
+	}
+
+	.label {
+		font-weight: 700;
+		font-size: 0.95rem;
+		letter-spacing: 0.04em;
+	}
+
+	.shine {
+		position: absolute;
+		inset: -40% auto auto -30%;
+		width: 45%;
+		height: 140%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+		transform: rotate(18deg);
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
+
+	.nav-btn:hover .shine {
+		opacity: 1;
+		animation: sweep 0.8s ease;
+	}
+
+	@keyframes sweep {
+		from {
+			left: -40%;
+		}
+		to {
+			left: 120%;
+		}
+	}
+</style>
