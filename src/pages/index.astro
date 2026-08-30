@@ -20,7 +20,7 @@ import { withBase } from '../utils/path';
 
 		<MascotStatusBar
 			lineId="mascot-line"
-			line="看板娘以虚化全屏为伴 · 短发异瞳 · 国风执剑 · 择一入口继续"
+			line="青绿柔光 · Fuwari 风配色 · 择一入口继续"
 		/>
 
 		<div class="nav-grid" id="nav-grid">
@@ -71,8 +71,7 @@ import { withBase } from '../utils/path';
 
 	<script>
 		const line = document.getElementById('mascot-line');
-		const defaultText =
-			'看板娘以虚化全屏为伴 · 短发异瞳 · 国风执剑 · 择一入口继续';
+		const defaultText = '青绿柔光 · Fuwari 风配色 · 择一入口继续';
 		document.querySelectorAll('#nav-grid .nav-btn').forEach((btn) => {
 			const hint = btn.getAttribute('data-hint');
 			if (!hint || !line) return;
@@ -99,13 +98,13 @@ import { withBase } from '../utils/path';
 		margin: 0 0 0.75rem;
 		font-size: 0.72rem;
 		letter-spacing: 0.28em;
-		color: rgba(212, 175, 55, 0.85);
+		color: rgba(57, 197, 187, 0.9);
 	}
 
 	.hero h1 {
 		margin-bottom: 0.65rem;
 		font-size: clamp(1.85rem, 4vw, 2.65rem);
-		background: linear-gradient(180deg, #fff 0%, #d4af37 120%);
+		background: linear-gradient(120deg, #ecfdf9 0%, #39c5bb 55%, #7dd3c8 100%);
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
