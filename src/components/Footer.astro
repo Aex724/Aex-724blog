@@ -1,49 +1,21 @@
 ---
-import { SITE_TITLE, GITHUB_USER, GITHUB_SMARTCAR } from '../consts';
 
-const today = new Date();
+import { profileConfig } from "../config";
+import { url } from "../utils/url-utils";
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer>
-	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
-	<p class="links">
-		<a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-		<span aria-hidden="true">·</span>
-		<a href={GITHUB_SMARTCAR} target="_blank" rel="noopener noreferrer">Smartcar</a>
-	</p>
-</footer>
-<style>
-	footer {
-		padding: 2rem 1rem 2.75rem;
-		text-align: center;
-		border-top: 1px solid rgba(57, 197, 187, 0.12);
-		background: linear-gradient(180deg, transparent, rgba(7, 18, 20, 0.72));
-	}
-
-	.copy {
-		margin: 0 0 0.4rem;
-		color: rgba(148, 175, 178, 0.85);
-		font-size: 0.82rem;
-		letter-spacing: 0.06em;
-	}
-
-	.links {
-		margin: 0;
-		font-size: 0.82rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
-	.links a {
-		color: rgba(57, 197, 187, 0.9);
-	}
-
-	.links a:hover {
-		color: #fff;
-	}
-
-	.links span {
-		margin: 0 0.45em;
-		color: rgba(100, 130, 135, 0.8);
-	}
-</style>
+<!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">-->
+<div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div>
+<!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">-->
+<div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6">
+    <div class="transition text-50 text-sm text-center">
+        &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. All Rights Reserved. /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
+        Powered by
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+    </div>
+</div>
